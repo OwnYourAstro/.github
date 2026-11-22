@@ -38,9 +38,11 @@ affiliated with, endorsed by, or sponsored by Motorola Solutions.
 
 | Project | Role | Status |
 | --- | --- | --- |
-| **OpenDepotCore** | Core engine: codeplug model, file formats, transport, validation, and depot-level operations | Planned |
-| **OpenDepot** | Cross-platform GUI on top of the core. Desktop first; web and Android frontends later | Planned |
-| **Docs & specs** | Clean-room behavioral specifications and test vectors that both projects build against | In progress |
+| [**OpenDepotCore**](https://github.com/OwnYourAstro/OpenDepotCore) | Core engine: codeplug model, file formats, transport, validation, and depot-level operations | Alpha |
+| [**OpenDepot**](https://github.com/OwnYourAstro/OpenDepot) | Cross-platform GUI on top of the core. Desktop first; web and Android frontends later | Alpha |
+| [**Docs & specs**](https://github.com/OwnYourAstro/OpenDepot/tree/master/docs) | Clean-room behavioral specifications and test vectors that both projects build against | In progress |
+
+Project site: [ownyourastro.com](https://ownyourastro.com).
 
 `OpenDepotCore` holds the logic. `OpenDepot` is a client of it, so that a
 desktop build, a web build, and an Android build can share one implementation
@@ -84,9 +86,18 @@ See [`docs/scope.md`](docs/scope.md) for detail.
 
 ## Status
 
-Pre-alpha. The organization was created in November 2026 and the first
-repositories are still being laid out. Nothing here is ready to program a
-radio. Watch this space, or read [`docs/roadmap.md`](docs/roadmap.md).
+Alpha. The core decodes and edits codeplugs, represents every record in a
+CPS-style model (149 tags across the test corpus), and implements the native
+serial/PPP/RCMP transport without a vendor DLL. Reads and writes have been
+validated on a single XTS 2500 (137 records, identical read-back). The Qt 6
+desktop app builds on the core.
+
+Only one model and band has been exercised on hardware. Firmware flashing is
+not supported. Keep a verified backup and never force a refused write.
+
+Start with [OpenDepotCore](https://github.com/OwnYourAstro/OpenDepotCore) for
+the engine and [OpenDepot](https://github.com/OwnYourAstro/OpenDepot) for the
+desktop app. Watch the [roadmap](docs/roadmap.md) for what is next.
 
 If you have a radio on a bench, a documented observation, or clean-room
 experience, you are exactly who this project needs.

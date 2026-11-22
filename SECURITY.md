@@ -33,7 +33,7 @@ Two rules apply to every report, test, and pull request:
 
 ## Supported versions
 
-The project is pre-alpha. Until a release is tagged, fixes land on the default
+The project is alpha. Until a release is tagged, fixes land on the default
 branch and there are no backports.
 
 ## Disclosure

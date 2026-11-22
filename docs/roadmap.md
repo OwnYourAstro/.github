@@ -3,35 +3,47 @@
 This is intent, not a schedule. Everything below assumes bench hardware, a
 written clean-room spec, and passing tests before it ships.
 
+## Current status (November 2026)
+
+Alpha. `OpenDepotCore` reads, decodes, edits, and writes codeplugs, represents
+every record in a CPS-style model (149 tags across the test corpus), and has a
+native serial/PPP/RCMP transport. `OpenDepot` is a working Qt 6 desktop client.
+Read/write is validated on **one** XTS 2500; firmware flashing is out of scope.
+
 ## Phase 0 — Foundation
 
 - [x] Organization, policies, and clean-room process
-- [ ] Repository layout for `OpenDepotCore` and `OpenDepot`
-- [ ] Core API sketch and format-description conventions
-- [ ] First specification: codeplug container and a read-only round trip
+- [x] Repository layout for `OpenDepotCore` and `OpenDepot`
+- [x] Core API sketch and format-description conventions
+- [x] First specification: codeplug container and a read-only round trip
 
 ## Phase 1 — Read-only
 
-- [ ] Identify a connected radio and report model, firmware, and serial
-- [ ] Read a codeplug and represent it losslessly
-- [ ] Export to an open, documented interchange format
-- [ ] Verify a re-read matches the first read across a bench sample
+- [x] Identify a connected radio and report model, firmware, and serial
+- [x] Read a codeplug and represent it losslessly
+- [x] Export a decoded model (`--model`, `--schema`) and raw records
+- [x] Verify a re-read matches the first read on the bench radio
 
-Read-only first. Nothing in this phase writes to hardware.
+Read-only first. The native read path never writes; writes are a separate,
+explicitly validated path.
 
 ## Phase 2 — Write, carefully
 
-- [ ] Validate before write, with a dry-run diff
-- [ ] Write back a configuration that was read unmodified
-- [ ] Write back a minimal edit (for example, one channel name)
-- [ ] Interrupted-session recovery and post-write verification
+- [x] Validate before write, with a dry-run diff and completeness guard
+- [x] Write back a configuration that was read unmodified
+- [x] Write back a minimal edit (for example, one channel name)
+- [x] Return the radio to AT mode after every session, with post-write identity
+      verification
 - [ ] Bench matrix across supported models and firmware
+- [ ] Full record-level read-back comparison after every write in the GUI
 
 ## Phase 3 — Usable GUI
 
-- [ ] `OpenDepot` desktop client on the core
-- [ ] Zone/channel editing, scan lists, contacts, and button assignments
-- [ ] Import and export, backup and restore
+- [x] `OpenDepot` desktop client on the core
+- [x] Zone/channel editing, plus alias and list views
+- [ ] Full scan-list, contact, and button-assignment editing
+- [x] Backup and restore
+- [ ] Import and export beyond `.cpg`
 - [ ] Packaging for Windows first, then Linux and macOS
 
 ## Phase 4 — Depot workflows

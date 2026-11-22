@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Contributing and the clean-room rules
+    url: https://github.com/OwnYourAstro/.github/blob/main/CONTRIBUTING.md
+    about: Read this before opening an issue or pull request.
+  - name: Security policy
+    url: https://github.com/OwnYourAstro/.github/blob/main/SECURITY.md
+    about: Report vulnerabilities privately, not in a public issue.
+  - name: Project scope
+    url: https://github.com/OwnYourAstro/.github/blob/main/docs/scope.md
+    about: What is in scope and what is not.

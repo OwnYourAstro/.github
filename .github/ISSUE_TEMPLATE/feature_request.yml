@@ -1,0 +1,52 @@
+name: Feature request
+description: Propose a capability, a format, or a protocol behavior
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Feature requests that depend on material obtained in violation of law
+        or contract cannot be accepted. Read docs/scope.md first.
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What can you not do today, and who does it affect?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: What should the software do? Describe behavior, not vendor code.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - OpenDepotCore
+        - OpenDepot desktop
+        - OpenDepot web
+        - OpenDepot Android
+        - Format or protocol spec
+        - Documentation
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: What is this based on
+      description: |
+        Bench observation, public document, or your own capture? Link a spec or
+        describe how it could be observed. "Unverified" is an acceptable answer.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: This does not require distributing vendor software, firmware, or entitlement material.
+          required: true

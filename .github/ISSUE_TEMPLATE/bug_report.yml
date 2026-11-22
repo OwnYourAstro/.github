@@ -1,0 +1,61 @@
+name: Bug report
+description: Something does not work as specified or as expected
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filing: this project programs radio hardware. Do not paste
+        vendor software, firmware, decompiled output, entitlement material, or
+        anyone else's codeplug. See CONTRIBUTING.md.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Connect ...
+        2. Read ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - OpenDepotCore
+        - OpenDepot desktop
+        - OpenDepot web
+        - OpenDepot Android
+        - Format or protocol spec
+        - Documentation
+        - Not sure
+    validations:
+      required: true
+  - type: input
+    id: radio
+    attributes:
+      label: Radio model and firmware
+      description: Only if relevant, and only for hardware you own or are authorized to service.
+      placeholder: e.g. portable, model, firmware version
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or output
+      description: Redact serial numbers, identifiers, credentials, and personal data.
+      render: text
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I have removed vendor binaries, entitlement material, and third-party personal data from this report.
+          required: true
+        - label: This was observed on a bench, not on a live radio system.
+          required: true

@@ -8,7 +8,14 @@ written clean-room spec, and passing tests before it ships.
 Alpha. `OpenDepotCore` reads, decodes, edits, and writes codeplugs, represents
 every record in a CPS-style model (149 tags across the test corpus), and has a
 native serial/PPP/RCMP transport. `OpenDepot` is a working Qt 6 desktop client.
-Read/write is validated on **one** XTS 2500; firmware flashing is out of scope.
+Read/write is validated on **one** XTS 2500.
+
+`OpenAstro` is the firmware-research track. The R17 host is decrypted and the
+M\*CORE simulator reaches RTOS initialization, the application callback, and
+the real 87-entry task table. The stock UI is not booted: its tasks call
+low-ROM object/display state that is absent from the RAPP image. A boot-ROM or
+application-RAM capture is the current blocker. OpenDepot firmware flashing
+remains out of scope.
 
 ## Phase 0 — Foundation
 
@@ -52,7 +59,19 @@ explicitly validated path.
 - [ ] Depot-level operations for authorized service use
 - [ ] Audit logging for every destructive operation
 
-## Phase 5 — Other frontends
+## Phase 5 — Firmware research (`OpenAstro`)
+
+- [x] Decrypt and extract the matching R17 host RAPP without a FLASHkey
+- [x] Build a standalone M\*CORE simulator around the R17 host
+- [x] Reach RTOS initialization, the application callback, and the runtime task table
+- [x] Map the 87-entry task table, object lookup table, and UI object framework
+- [x] Build a first RAM hello payload and verify SRAM write/read through FlashZap
+- [ ] Resolve the bootloader jump/execution path and render the hello on the LCD
+- [ ] Obtain a boot-ROM or application-RAM capture for the UI object/display state
+- [ ] Boot the stock R17 UI and render the LCD
+- [ ] Build and run a hello-world host application on real hardware
+
+## Phase 6 - Other frontends
 
 - [ ] Web frontend over the core
 - [ ] Android frontend over the core

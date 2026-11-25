@@ -40,6 +40,7 @@ affiliated with, endorsed by, or sponsored by Motorola Solutions.
 | --- | --- | --- |
 | [**OpenDepotCore**](https://github.com/OwnYourAstro/OpenDepotCore) | Core engine: codeplug model, file formats, transport, validation, and depot-level operations | Alpha |
 | [**OpenDepot**](https://github.com/OwnYourAstro/OpenDepot) | Cross-platform GUI on top of the core. Desktop first; web and Android frontends later | Alpha |
+| [**OpenAstro**](https://github.com/OwnYourAstro/OpenAstro) | Firmware research: XTS 2500 host emulator, memory map, and open-firmware path | Research archive; emulator boots RTOS/task table, stock UI blocked |
 | [**Docs & specs**](https://github.com/OwnYourAstro/OpenDepot/tree/master/docs) | Clean-room behavioral specifications and test vectors that both projects build against | In progress |
 
 Project site: [ownyourastro.com](https://ownyourastro.com).
@@ -86,18 +87,29 @@ See [`docs/scope.md`](docs/scope.md) for detail.
 
 ## Status
 
-Alpha. The core decodes and edits codeplugs, represents every record in a
-CPS-style model (149 tags across the test corpus), and implements the native
-serial/PPP/RCMP transport without a vendor DLL. Reads and writes have been
-validated on a single XTS 2500 (137 records, identical read-back). The Qt 6
-desktop app builds on the core.
+Alpha for codeplug tooling. The core decodes and edits codeplugs, represents
+every record in a CPS-style model (149 tags across the test corpus), and
+implements the native serial/PPP/RCMP transport without a vendor DLL. Reads
+and writes have been validated on a single XTS 2500 (137 records, identical
+read-back). The Qt 6 desktop app builds on the core.
+
+OpenAstro is a separate research track. The matching R17 host image is
+decrypted and the M\*CORE simulator reaches RTOS initialization, the
+application callback, and the real 87-entry task table. The stock UI is not
+booted yet: the UI task depends on low-ROM object/display state that is not in
+the RAPP image. A boot-ROM or application-RAM capture is the current blocker.
+
+A first custom RAM hello payload is now buildable. FlashZap can write and
+verify it in SRAM, but the bootloader jump/execution path is still unresolved.
 
 Only one model and band has been exercised on hardware. Firmware flashing is
 not supported. Keep a verified backup and never force a refused write.
 
 Start with [OpenDepotCore](https://github.com/OwnYourAstro/OpenDepotCore) for
 the engine and [OpenDepot](https://github.com/OwnYourAstro/OpenDepot) for the
-desktop app. Watch the [roadmap](docs/roadmap.md) for what is next.
+desktop app. Follow [OpenAstro](https://github.com/OwnYourAstro/OpenAstro) for
+the firmware research track, and watch the [roadmap](docs/roadmap.md) for what
+is next.
 
 If you have a radio on a bench, a documented observation, or clean-room
 experience, you are exactly who this project needs.
